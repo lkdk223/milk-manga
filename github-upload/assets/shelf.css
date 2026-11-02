@@ -1,0 +1,23 @@
+/* Real six-face geometry, animated by the native scroll position. */
+.archive-stage{height:390px;mask-image:none;-webkit-mask-image:none;overflow:hidden}
+.archive-stage:after{bottom:48px;transform:perspective(500px) rotateX(60deg);height:70px;background:linear-gradient(#c2cdd129,transparent);border-top:1px solid #c9d3d880}
+.archive-stage .books{position:absolute;left:0;bottom:20px;width:100%;height:360px;display:flex;align-items:stretch;gap:0;padding:28px calc(50% - 64px);transform:none;perspective:none;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y pinch-zoom;cursor:grab;user-select:none;-webkit-user-select:none}
+.books::-webkit-scrollbar{display:none}
+.archive-stage .books.dragging{scroll-snap-type:none;cursor:grabbing}
+.book-slot{position:relative;flex:0 0 128px;width:128px;min-width:128px;height:300px;perspective:800px;scroll-snap-align:center;scroll-snap-stop:normal}
+.archive-stage .archive-book,.archive-stage .archive-book.active{position:absolute;top:15px;left:50%;width:146px;height:248px;padding:0;background:transparent;transform-style:preserve-3d;transform:translateX(-50%) translateY(var(--lift,0px)) rotateX(4deg) rotateY(var(--yaw,-18deg)) scale(var(--scale,1));transform-origin:center;transition:none;overflow:visible;outline-offset:15px;-webkit-tap-highlight-color:transparent}
+.archive-stage .archive-book:before{display:none}
+.archive-stage .archive-book:after{content:"";position:absolute;left:-12px;right:-18px;height:35px;bottom:-27px;transform:rotateX(82deg) translateZ(-13px);background:#233d4850;filter:blur(12px);pointer-events:none}
+.archive-stage .front,.archive-stage .archive-book.active .front{display:flex;position:absolute;inset:0;width:146px;height:248px;padding:12px 12px 9px;border:1px solid #c4c7bd;background:linear-gradient(105deg,#d7d9cf 0%,#fefdf6 8%,#fffef9 55%,#eeeede 100%);transform:translateZ(13px);flex-direction:column;box-shadow:inset 4px 0 7px #233a401b,inset -1px 0 0 #fff;backface-visibility:hidden;transform-origin:center}
+.archive-stage .front:after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,#ffffff45,transparent 45%,#1b303811);pointer-events:none}
+.archive-stage .front img{width:100%;height:171px;margin:8px 0 6px;object-fit:cover;pointer-events:none;-webkit-user-drag:none;border:1px solid #24363b19;box-shadow:0 1px 2px #26383b1a}
+.archive-stage .front .book-title{font-size:11px;color:#293335}
+.archive-stage .front .code,.archive-stage .front .book-code{color:#69736d}
+.archive-stage .spine{position:absolute;left:-13px;top:0;width:26px;height:248px;padding:12px 4px;background:linear-gradient(90deg,#c3c7b9,#f4f3e6 48%,#e0e2d2);border:1px solid #b9beb1;transform:rotateY(-90deg);transform-origin:center;display:flex;align-items:center;flex-direction:column;box-shadow:inset -4px 0 5px #414c3224;backface-visibility:hidden;color:#34413b}
+.archive-stage .spine .vertical{max-height:177px;font-size:11px}
+.book-back{position:absolute;inset:0;background:linear-gradient(100deg,#d1d5c7,#eceede);border:1px solid #bcc2b3;transform:rotateY(180deg) translateZ(13px);backface-visibility:hidden}
+.book-pages{position:absolute;right:-13px;top:2px;width:26px;height:244px;background:repeating-linear-gradient(90deg,#e3e1d1 0 1px,#fdfbee 1px 3px);border:1px solid #bfc1b4;transform:rotateY(90deg);backface-visibility:hidden}
+.book-top,.book-bottom{position:absolute;left:0;top:-13px;width:146px;height:26px;border:1px solid #c6c8b9;background:repeating-linear-gradient(0deg,#e4e3d4 0 1px,#fffef1 1px 3px);transform:rotateX(90deg);backface-visibility:hidden}
+.book-bottom{top:auto;bottom:-13px;transform:rotateX(-90deg);background:#d6d7c7}
+.dark .archive-stage .front,.dark .archive-stage .archive-book.active .front{background:linear-gradient(105deg,#c3c8bc,#e5e8dd 10%,#f0f1e6 55%,#d4d8ca)}
+@media(min-width:650px){.archive-stage{height:410px}.archive-stage .books{transform:none;height:380px;bottom:10px}.book-slot{perspective:900px}}
